@@ -1,0 +1,8 @@
+[kubernetes-master]
+k8s-m-01 ansible_host=10.0.3.124
+
+[kubernetes-worker]
+k8s-w-01 ansible_host=10.0.3.125
+k8s-w-02 ansible_host=10.0.3.126
+k8s-w-03 ansible_host=10.0.3.127
+
