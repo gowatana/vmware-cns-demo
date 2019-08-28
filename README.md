@@ -1,5 +1,10 @@
 # VMware CNS デモむけの Oracle Linux 7 / CentOS 7 設定
 
+下記の投稿むけです。  
+vSphere / vSAN 6.7 U3 と Kubernetes で VMware Cloud Native Storage を試してみる。
+<https://communities.vmware.com/people/gowatana/blog/2019/08/28/k8s-csi-vsan>
+
+
 Ansible の準備。
 
 ```
