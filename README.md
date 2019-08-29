@@ -18,7 +18,7 @@ Ansible の準備。
 Ansible を実行するサーバに、Playbook などをダウンロード。
 
 ```
-$ git clone http://
+$ git clone https://github.com/gowatana/vmware-cns-demo.git
 ```
 
 設定対象の指定と確認。
