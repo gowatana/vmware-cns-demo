@@ -22,7 +22,7 @@
 
   - name: copy files to 03_demo
     copy:
-      dest: /root/013_demo/
+      dest: /root/03_demo/
       src: "{{ item }}"
     with_items:
       - files/03_demo/mongodb-key.txt
