@@ -23,12 +23,16 @@
       disablerepo: docker-ce-stable,kubernetes
     notify:
       - os_reboot
+      - os_reboot_wait
 
   - name: disable selinux
     replace:
       dest: /etc/selinux/config
       regexp: '^SELINUX=.*$'
       replace: 'SELINUX=disabled'
+    notify:
+      - os_reboot
+      - os_reboot_wait
 
   - name: install pre rpms
     yum:
@@ -59,7 +63,6 @@
     get_url:
       url: https://download.docker.com/linux/centos/docker-ce.repo
       dest: /etc/yum.repos.d/
-
 
   - name: enable Oracle Linux ol7_addons repo
     ini_file:
@@ -152,5 +155,14 @@
   - name: os_reboot
     command:
       cmd: reboot
+    async: 1
+    poll: 0
     ignore_errors: true
+
+  - name: os_reboot_wait
+    wait_for:
+      host: "{{ ansible_host }}"
+      port: 22
+      delay: 15
+    delegate_to: localhost
 
