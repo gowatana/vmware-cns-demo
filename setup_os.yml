@@ -98,8 +98,8 @@
     yum:
       name:
         - kubelet-1.14.2
-        - kubeadm
-        - kubectl
+        - kubeadm-1.14.2
+        - kubectl-1.14.2
       state: installed
 
   - name: open k8s firewall
