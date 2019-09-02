@@ -20,16 +20,6 @@
     with_items:
       - files/01_kubeadm/kubeadm-init-master.yml
 
-  - name: copy files to 03_demo
-    copy:
-      dest: /root/03_demo/
-      src: "{{ item }}"
-    with_items:
-      - files/03_demo/mongodb-key.txt
-      - files/03_demo/mongodb-service.yaml
-      - files/03_demo/mongodb-statefulset.yaml
-      - files/03_demo/mongodb-storageclass.yaml
-
   - name: copy files to 02_k8s-csi
     copy:
       dest: /root/02_k8s-csi/
@@ -39,6 +29,16 @@
       - files/02_k8s-csi/csi-vsphere.conf
       - files/02_k8s-csi/csi-driver-rbac.yaml
       - files/02_k8s-csi/csi-driver-deploy.yaml
+
+  - name: copy files to 03_demo
+    copy:
+      dest: /root/03_demo/
+      src: "{{ item }}"
+    with_items:
+      - files/03_demo/mongodb-storageclass.yaml
+      - files/03_demo/mongodb-key.txt
+      - files/03_demo/mongodb-service.yaml
+      - files/03_demo/mongodb-statefulset.yaml
 
 - name: copy sample files to kubernetes-worker
   hosts: kubernetes-worker
