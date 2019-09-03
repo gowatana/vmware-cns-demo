@@ -34,13 +34,22 @@
       - os_reboot
       - os_reboot_wait
 
-  - name: install pre rpms
+  - name: install basic RPMs
     yum:
       name:
         - firewalld
         - yum-utils
         - device-mapper-persistent-data
         - lvm2
+      state: latest
+
+  - name: install demo RPMs
+    yum:
+      name:
+        - bind-utils
+        - bridge-utils
+        - tcpdump
+        - bash-completion
       state: latest
 
   - name: disable firewalld
@@ -111,6 +120,11 @@
         - kubeadm-1.14.2
         - kubectl-1.14.2
       state: installed
+
+  - name: add kubectl bash completion
+    lineinfile:
+      path:
+      line: 'source <(kubectl completion bash)'
 
   - name: open k8s firewall
     firewalld:
