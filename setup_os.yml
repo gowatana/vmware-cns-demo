@@ -43,11 +43,18 @@
         - lvm2
       state: latest
 
-  - name: start firewalld
+  - name: disable firewalld
     service:
       name: firewalld
-      enabled: true
-      state: started
+      enabled: false
+    notify:
+      - os_reboot
+      - os_reboot_wait
+
+  - name: Copy /etc/sysctl.d/ipv6.conf
+    copy:
+      content: "net.ipv6.conf.all.disable_ipv6 = 1"
+      dest: /etc/sysctl.d/ipv6.conf
 
   - name: add sysctl file
     copy:
