@@ -55,10 +55,8 @@
   - name: disable firewalld
     service:
       name: firewalld
-      enabled: false
-    notify:
-      - os_reboot
-      - os_reboot_wait
+      enabled: true
+      state: started
 
   - name: Copy /etc/sysctl.d/ipv6.conf
     copy:
@@ -125,6 +123,13 @@
     lineinfile:
       path: /root/.bash_profile
       line: 'source <(kubectl completion bash)'
+
+  - name: enable firewalld masquerade
+    firewalld:
+      masquerade: true
+      state: enabled
+      permanent: true
+      immediate: true
 
   - name: open k8s firewall
     firewalld:
