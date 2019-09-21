@@ -24,6 +24,7 @@ $ git clone https://github.com/gowatana/vmware-cns-demo.git
 設定対象の指定と確認。
 
 ```
+$ cd vmware-cns-demo/
 $ cp inventory/hosts.template inventory/hosts
 $ vi inventory/hosts
 $ ssh-copy-id root@xxx.xxx.xxx.xxx
