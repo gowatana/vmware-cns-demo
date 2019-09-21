@@ -30,7 +30,7 @@
 
   - name: get discovery.yml
     command:
-      cmd: "scp root@{{ ansible_host }}:/etc/kubernetes/discovery.yml ./files/discovery.yml"
+      cmd: "scp -o StrictHostKeyChecking=no root@{{ ansible_host }}:/etc/kubernetes/discovery.yml ./files/discovery.yml"
     delegate_to: localhost
 
 
