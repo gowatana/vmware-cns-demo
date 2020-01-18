@@ -52,7 +52,7 @@
         - bash-completion
       state: latest
 
-  - name: disable firewalld
+  - name: enable firewalld
     service:
       name: firewalld
       enabled: true
